@@ -28,7 +28,7 @@ A significant part of the planning phase was dedicated to ethical considerations
 ### 2. Feature Engineering
 To prepare the data for modeling, the following steps were taken:
 * **Data Filtering**: The dataset was filtered to include only trips paid by **credit card** (`payment_type == 1`), as cash tips are not recorded.
-* **Target Variable Creation**: A new binary column, `generous`, was created[cite: 11]. It was assigned a value of `1` if the `tip_percent` was ≥ 20%, and `0` otherwise.
+* **Target Variable Creation**: A new binary column, `generous`, was created. It was assigned a value of `1` if the `tip_percent` was ≥ 20%, and `0` otherwise.
 * **New Feature Creation**:
     * Time-based features were engineered from the `tpep_pickup_datetime` column, including `day` of the week, `month`, and four binary columns for time-of-day (`am_rush`, `daytime`, `pm_rush`, `nighttime`).
 * **Data Cleaning**: Redundant, irrelevant, and data-leaking columns (e.g., `tip_amount`, `total_amount`, `trip_distance`) were dropped.
@@ -36,8 +36,8 @@ To prepare the data for modeling, the following steps were taken:
 
 ### 3. Modeling and Evaluation
 * **Model Selection**: A **Random Forest Classifier** was chosen for its robustness and ability to handle non-linear relationships. An XGBoost model was also trained as a benchmark, but the Random Forest was selected as the final model due to its comparable performance and superior ease of explanation.
-* **Evaluation Metric**: The **F1-score** was chosen as the primary evaluation metric because the business objective required a balance between precision and recall[cite: 31, 65]. The dataset was nearly balanced (49% "generous" vs. 51% "not generous"), making accuracy a reasonable secondary metric.
-* **Tuning**: `GridSearchCV` was used to perform a comprehensive search for the optimal hyperparameters for the Random Forest model, ensuring it was well-tuned and not overfit[cite: 31, 43].
+* **Evaluation Metric**: The **F1-score** was chosen as the primary evaluation metric because the business objective required a balance between precision and recall. The dataset was nearly balanced (49% "generous" vs. 51% "not generous"), making accuracy a reasonable secondary metric.
+* **Tuning**: `GridSearchCV` was used to perform a comprehensive search for the optimal hyperparameters for the Random Forest model, ensuring it was well-tuned and not overfit.
 
 ## Results and Key Insights
 
